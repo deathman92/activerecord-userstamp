@@ -19,6 +19,21 @@ module ActiveRecord::Userstamp::Configuration
   def self.default_stamper_class
     ActiveRecord::Base.stamper_class
   end
+  
+  # !@attribute [r] default_stamper_table_name
+  #   Determines the default table name to create foreign keys for stamper.
+  #
+  #   By default, this is set to +'users'+.
+  def self.default_stamper_table_name
+    @stamper_table_name
+  end
+
+  # !@attribute [rw] default_stamper_table_name
+  # @see {.default_stamper_table_name}
+  def self.default_stamper_table_name=(table_name)
+    @stamper_table_name = table_name
+  end
+  self.default_stamper_table_name = 'users'.freeze
 
   # !@attribute [rw] creator_attribute
   #   Determines the name of the column in the database which stores the name of the creator.
